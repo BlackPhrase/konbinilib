@@ -16,12 +16,6 @@
 namespace konbini
 {
 
-#if KONBINI_PLATFORM == KONBINI_PLATFORM_WINDOWS
-	using tLibHandle = HMODULE;
-#else
-	using tLibHandle = void*;
-#endif
-
 //shared_lib *LoadLib(const char *asPath);
 
 class shared_lib : public noncopyable
