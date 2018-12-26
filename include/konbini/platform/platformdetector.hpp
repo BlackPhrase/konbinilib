@@ -7,29 +7,12 @@
 
 #pragma once
 
-namespace konbini
-{
-
-#define KONBINI_PLATFORM PlatformType::Invalid
-
 #ifdef _WIN32
-#	define KONBINI_PLATFORM PlatformType::Windows
+#	define KONBINI_PLATFORM KONBINI_PLATFORM_WINDOWS
 #elif __linux__
-#	define KONBINI_PLATFORM PlatformType::Linux
+#	define KONBINI_PLATFORM KONBINI_PLATFORM_LINUX
 #elif __APPLE__
-#	define KONBINI_PLATFORM PlatformType::Apple
+#	define KONBINI_PLATFORM KONBINI_PLATFORM_APPLE
 #else
-#	error "Unsupported platform!"
+#	define KONBINI_PLATFORM KONBINI_PLATFORM_INVALID
 #endif
-
-#if KONBINI_PLATFORM == PlatformType::Windows
-	static constexpr PlatformType Platform{PlatformType::Windows};
-#elif KONBINI_PLATFORM == PlatformType::Linux
-	static constexpr PlatformType Platform{PlatformType::Linux};
-#elif KONBINI_PLATFORM == PlatformType::Apple
-	static constexpr PlatformType Platform{PlatformType::Apple};
-#else
-	static constexpr PlatformType Platform{PlatformType::Invalid};
-#endif
-
-}; // namespace konbini

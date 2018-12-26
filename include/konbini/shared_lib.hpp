@@ -36,10 +36,11 @@ public:
 	{
 		close();
 		
-		if constexpr(Platform == PlatformType::Windows)
+#if KONBINI_PLATFORM == KONBINI_PLATFORM_WINDOWS
 			mpLibHandle = LoadLibrary(asPath.c_str());
-		else
+#else
 			mpLibHandle = dlopen(asPath.c_str(), RTLD_NOW);
+#endif
 		
 		return mpLibHandle ? true : false;
 	};
@@ -50,10 +51,11 @@ public:
 		
 		void *pFunc{nullptr};
 		
-	if constexpr(Platform == PlatformType::Windows)
+#if KONBINI_PLATFORM == KONBINI_PLATFORM_WINDOWS
 		pFunc = (void*)GetProcAddress(mpLibHandle, asName.c_str());
-	else
+#else
 		pFunc = dlsym(mpLibHandle, asName.c_str());
+#endif
 		
 		return pFunc;
 	};
@@ -76,10 +78,11 @@ private:
 		if(!mpLibHandle)
 			return;
 
-		if constexpr(Platform == PlatformType::Windows)
+#if KONBINI_PLATFORM == KONBINI_PLATFORM_WINDOWS
 			FreeLibrary(mpLibHandle);
-		else
+#else
 			dlclose(mpLibHandle);
+#endif
 	};
 	
 	tString msPath{""}; ///< Full path to the library

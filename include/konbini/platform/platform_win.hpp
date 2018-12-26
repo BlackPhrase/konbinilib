@@ -14,6 +14,8 @@
 namespace konbini
 {
 
+constexpr PlatformType Platform{PlatformType::Windows};
+
 using tLibHandle = HMODULE;
 
 }; // namespace konbini
