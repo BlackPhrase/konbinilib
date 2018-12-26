@@ -32,6 +32,8 @@ public:
 	
 	virtual ~shared_lib(){close();} // TODO: why virtual?
 	
+	operator bool(){return mpLibHandle != nullptr;}
+	
 	bool open(const tString &asPath) // TODO: load?
 	{
 		close();
