@@ -1,0 +1,6 @@
+#pragma once
+
+//#include "modules/math/math_const.hpp"
+#include "modules/math/vec2.hpp"
+#include "modules/math/vec3.hpp"
+//#include "modules/math/vec4.hpp"
